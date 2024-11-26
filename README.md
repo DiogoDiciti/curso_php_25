@@ -1,5 +1,5 @@
 # curso_php_25
--Abrir vscode na pasta /var/www/html
+- Abrir vscode na pasta /var/www/html
  - file -> open folder
 - github vai em code copia o link para clonar
 - vscode treminal -> novo treminal
