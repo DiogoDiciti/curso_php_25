@@ -5,3 +5,8 @@
 - vscode treminal -> novo treminal
  - git clone link github (direito do mause ou ctrl v)
 - abrir vscode na pasta do projeto|repo /var/www/html/php_curso_25
+- passo a passo do GIT para salvar no GitHub:
+
+-`git add .`
+-`git commit -m`
+-`git puh`
