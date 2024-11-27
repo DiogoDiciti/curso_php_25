@@ -14,3 +14,4 @@
   próximo commit. Em seguida, git commit é usado para criar um instantâneo das alterações preparadas ao longo de uma linha do tempo do histórico de projetos Git.
   
   - `git push` Um dos comando essencial no Git é o `git push`. Este comando é fundamental para enviar seus commits locais para um repositório remoto, permitindo que você compartilhe seu trabalho com outros colaboradores ou faça backup das suas alterações em um servidor remoto. 
+## Conflito no Readme
