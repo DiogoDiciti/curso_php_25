@@ -1,7 +1,6 @@
 <?php 
 
-    $numero = 6;
-    "<br>"   
+    $numero = 6; 
         echo "<br>Tabuada do número 6<br>";
         echo "<br>6 x 1 = " .  $numero * 1;
         echo "<br>6 x 2 = " .  $numero * 2;
@@ -15,7 +14,6 @@
         echo "<br>6 x 10 = " . $numero * 10;
 
     $numero = 7;
-    "<br>"
         echo "<br>Tabuada do número 7<br>";
         echo "<br>7 x 1 = " .  $numero * 1;
         echo "<br>7 x 2 = " .  $numero * 2;
