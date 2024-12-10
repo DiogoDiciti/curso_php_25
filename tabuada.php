@@ -13,7 +13,7 @@
         echo "<br>6 x 9 = " .  $numero * 9;
         echo "<br>6 x 10 = " . $numero * 10;
 
-        echo "<br>"
+        echo "<br>";
 
     $numero = 7;
         echo "<br>Tabuada do número 7</br>";
