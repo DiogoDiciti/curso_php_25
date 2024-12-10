@@ -19,3 +19,28 @@ $array_short[]
 
 $objeto = new stdClass(); // POO - OOP
 $classe = new stdClass();
+
+echo "Ola 
+    <b>
+        <i>
+            mundo!
+        </i>
+    </b>
+<br>"; // <br></br> = <br/> ou <br>
+
+$string = "joao do caminhao";
+echo $string; // joao do caminhao
+
+echo "<br>CPF: " . CPF;
+
+$a = 10;
+$b = 20;
+$x =  $a + $b;
+echo "<br>x: " . $x;
+
+$soma =  10 + 10;
+echo "<br>soma: " . $soma;
+
+// Tema de casa sera fazer a tabuada (6, 7) e mostra na tela.
+
+
