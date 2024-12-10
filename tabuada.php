@@ -2,7 +2,7 @@
 
     $numero = 6;
         
-        echo "Tabuada do número 6<br>" . $numero . "<br>";
+        echo "<br><br>Tabuada do número 6<br>" . $numero . "<br>";
         echo "<br>6 x 1 = " .  $numero * 1;
         echo "<br>6 x 2 = " .  $numero * 2;
         echo "<br>6 x 3 = " .  $numero * 3;
