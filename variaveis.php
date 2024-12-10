@@ -20,6 +20,27 @@ $array_short =[];
 $objeto = new stdClass(); // POO - OOP
 $classe = new stdClass();
 
+// POO - OOP
+class CanetaAzul {
+    // Atributos e/ou Propriedades
+    public const COR = "Azul";
+    public const PLASTICO = true;
+    public $nome;
+    public $tipoMaterial = "Plastico";
+    public $dimensoes;
+    public $tipo;
+
+   // metodos e/ou funcoes
+   public function escrever() {
+
+   }
+
+   public function pintar() {
+
+   }
+}
+
+
 echo "Ola 
     <b>
         <i>
@@ -41,6 +62,6 @@ echo "<br>x: " . $x;
 $soma =  10 + 10;
 echo "<br>soma: " . $soma;
 
-// Tema de casa sera fazer a tabuada (6, 7) e mostra na tela.
+// Tema de casa sera fazer a tabuada (6, 7) e mostrar na tela.
 
 
