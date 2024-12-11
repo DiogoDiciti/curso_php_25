@@ -112,9 +112,19 @@ $resto = $numero /  2; // 10 / 2 = 5
 $resto = $numero %  2; // 10 / 2 = 0
 
 if ($resto == 0) {
-   echo "o $numero é par";
+   echo "<br>O $numero é PAR";
 } else {
-    echo "o $numero é impar";
+    echo "<br>O $numero é IMPAR";
+}
+
+echo "<br>";
+
+$resto = $numero % 2;
+
+if ($resto == 0) {
+    echo "<br>O $numero é PAR";
+} else {
+    echo "<br>O $numero é IMPAR";
 }
 
 
