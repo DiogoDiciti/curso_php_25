@@ -69,6 +69,7 @@ echo "<br>x: " . $x;
 
 $soma =  10 + 10;
 echo "<br>soma: " . $soma;
+
 /*
 
 / (divisão)
@@ -105,6 +106,7 @@ $resultado = 10 % 10; 0
  * 
  */
 
+ echo "<br>";
 $numero = 10;
 $resto = $numero /  2; // 10 / 2 = 5
 $resto = $numero %  2; // 10 / 2 = 0
@@ -115,5 +117,5 @@ if ($resto == 0) {
     echo "o $numero é impar";
 }
 
-exit;
+
  
