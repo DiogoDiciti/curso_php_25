@@ -17,8 +17,12 @@
 
 $numero = 10;
 // (9 -1) $numero - 1
-$lmitador = $numero - 1;
+$limitador = $numero - 1;
 
-for ($i = 2; $i <= $numero; $i++) {
-     echo "i $i é primo"
+for ($i = 2; $i < $limitador; $i++) {
+
 }
+for ($i = 2; $i < $limitador; $i++) {
+
+};
+
