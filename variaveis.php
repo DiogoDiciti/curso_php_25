@@ -1,7 +1,7 @@
 <?php
 
 const CPF = '12345678901';
-const VELOCIDADE_DA_LUZ = '320k';
+const VELOCIDADE_DA_LUZ = '320k/s2';
 
 // tipos de dados primitivos do PHP .
 $string = "Um texto qualquer";
@@ -38,6 +38,14 @@ class CanetaAzul {
    public function pintar() {
 
    }
+
+   public function getColor() {
+    return false;
+   }
+
+   public function setColor() {
+    return true;
+   }
 }
 
 
@@ -47,7 +55,7 @@ echo "Ola
             mundo!
         </i>
     </b>
-<br>"; // <br></br> = <br/> ou <br>
+<br>"; // <br></br> = <br/> ou <br> executadas em apenas navegadores.
 
 $string = "joao do caminhao";
 echo $string; // joao do caminhao
@@ -61,7 +69,50 @@ echo "<br>x: " . $x;
 
 $soma =  10 + 10;
 echo "<br>soma: " . $soma;
+/*
 
-// Tema de casa sera fazer a tabuada (6, 7) e mostrar na tela.
+/ (divisão)
+* (multiplicação)
++ (adição)
+- (subtraçõ)
 
+= 
+== (igual -> comparação)
+>= (maior igual)
+<= (menor igual)
+&& (e)
+|| (ou)
+. (cintatenação)
+% (modulo) pego o resto da divisao
 
+if, else, - se, senão
+
+if (CONDICAO) {
+    CONDICAO
+} else if (CONDICAO_2) {
+      outro CONDICAO
+}
+
+$resultado = 10 / 10; 1
+$resultado = 10 % 10; 0
+
+*/
+
+/**
+ * Exercicio 1:
+ * Atribuir um valor para uma variavel chamada numero.
+ *  e vamos informar ao usuario, se este numero é par ou impar.
+ * 
+ */
+
+$numero = 10;
+$resto = $numero /  2; // 10 / 2 = 5
+$resto = $numero %  2; // 10 / 2 = 0
+
+if ($resto == 0) {
+   echo "o $numero é par";
+} else {
+    echo "o $numero é impar";
+}
+
+ 
