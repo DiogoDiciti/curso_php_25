@@ -115,4 +115,5 @@ if ($resto == 0) {
     echo "o $numero é impar";
 }
 
+exit;
  
