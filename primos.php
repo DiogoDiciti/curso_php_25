@@ -1,8 +1,9 @@
 <?php
+$numero = 9;
 
-function verificarPrimo($numero) {
-    $limitador = $numero - 1;
-    $primo = true;
+$limitador = $numero - 1;
+    
+$primo = true;
 
     // Caso o número seja menor que 2, não é primo
     if ($numero < 2) {
@@ -23,4 +24,4 @@ function verificarPrimo($numero) {
     } else {
         echo "<br>O $numero NÃO é primo.";
     }
-}
+
