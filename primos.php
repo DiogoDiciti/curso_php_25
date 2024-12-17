@@ -1,27 +1,26 @@
 <?php
-// Função para verificar se um número é primo
-function verificarPrimo($n) {
-    if ($n <= 1) {
+// Função para verificar se o número é primo
+function verificarPrimo($numero) {
+    if ($numero <= 1) {
         return false; // Números menores ou iguais a 1 não são primos
     }
-    
-    // Laço para verificar se há divisores do número
-    for ($i = 2; $i < $n; $i++) {
-        if ($n % $i == 0) { // Se o número for divisível por $i
-            return false; // Não é primo
+
+    // Loop para verificar se o número tem algum divisor além de 1 e ele mesmo
+    for ($i = 2; $i <= sqrt($numero); $i++) {
+        if ($numero % $i == 0) {
+            return false; // Se o número for divisível por $i, não é primo
         }
     }
-    
-    return true; // Se não houver divisores, é primo
+
+    return true; // Se não encontrou divisores, o número é primo
 }
 
-// Solicita ao usuário que insira um número
-echo "Digite um número para verificar se é primo: ";
-$numero = trim(fgets(STDIN));
+// Exemplo de uso da função
+$numero = 29;
 
-// Verifica e exibe o resultado
 if (verificarPrimo($numero)) {
-    echo "$numero é primo!\n";
+    echo "$numero é um número primo.";
 } else {
-    echo "$numero não é primo.\n";
+    echo "$numero não é um número primo.";
 }
+?>
