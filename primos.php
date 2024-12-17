@@ -1,21 +1,26 @@
 <?php
-// Solicita ao usuário para digitar um número
-$n = (int)readline("Digite um número para verificar se é primo: ");
 
-// Verifica se o número é primo
-$primo = true;
+function verificarPrimo($numero) {
+    $limitador = $numero - 1;
+    $primo = true;
 
-for ($i = 2; $i < $n; $i++) {
-    if ($n % $i == 0) {
+    // Caso o número seja menor que 2, não é primo
+    if ($numero < 2) {
         $primo = false;
-        echo "O número $n não é primo (divisível por $i).\n";
-        break;
+    } else {
+        for ($i = 2; $i <= $limitador; $i++) {
+            // Verifica se o número é divisível por $i
+            $resto = $numero % $i;
+            if ($resto == 0) {
+                $primo = false;
+                break;
+            }
+        }
+    }
+
+    if ($primo) {
+        echo "<br>O $numero é primo.";
+    } else {
+        echo "<br>O $numero NÃO é primo.";
     }
 }
-
-if ($primo && $n > 1) {
-    echo "O número $n é primo!\n";
-} elseif ($n <= 1) {
-    echo "Por favor, insira um número maior que 1.\n";
-}
-?>
