@@ -1,4 +1,4 @@
-
+<?php
 /**
  * Exercicio2:
  * Dado um numero informado pelo usuario
@@ -26,8 +26,8 @@ for ($i = 2; $i < $limitador; $i++) {
 
 };
 
-<?php
-        //Descobrir se o número é primo ou não.
+
+        //Descobrir se o número é primo ou não. 
 
         $numero = $_POST['number'] ?? null;
 
@@ -49,4 +49,4 @@ for ($i = 2; $i < $limitador; $i++) {
             } else {
                 echo "Então " .$numero . " não é primo!<br> Ele possui $divisores divisor(es) além de 1 e ele mesmo.";
             }
-        ?>
+?>
