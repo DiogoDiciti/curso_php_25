@@ -1,5 +1,22 @@
 <?php
-$numero = 9;
+
+/**
+ * Exercicio2:
+ * Dado um numero informado  pelo usuario
+ * informar se ele é um numero primo.
+ */
+
+ // 1, 3, 5, 7, 9
+
+ /*
+    9 / 2
+    9 / 3
+    ...
+    9 / 8 
+*/
+
+
+$numero = 100;
 
 $limitador = $numero - 1;
     
@@ -22,6 +39,6 @@ $primo = true;
     if ($primo) {
         echo "<br>O $numero é primo.";
     } else {
-        echo "<br>O $numero NÃO é primo.";
+        echo "<br>O $numero não é primo.";
     }
 
