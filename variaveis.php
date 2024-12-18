@@ -61,11 +61,13 @@ $string = "joao do caminhao";
 echo $string; // joao do caminhao
 
 echo "<br>CPF: " . CPF;
-
+/*
 $a = 10;
 $b = 20;
 $x =  $a + $b;
 echo "<br>x: " . $x;
+
+// dois tipos 
 
 $soma =  10 + 10;
 echo "<br>soma: " . $soma;

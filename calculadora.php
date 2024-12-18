@@ -1,21 +1,24 @@
 <?php 
 
 /**
- *  operadores (+ - * /)
+ *  operadores (+ - * / #)
+ * # = percentual(%)
  */
 
-$numero = 1;
-$numero2 = 2;
-$operador = "+";
+$numero = 30;
+$numero2 = 200;
+$operador = "%";
+
+echo "<i><b>CALCULADORA</b></i><br><br>";
 
 if ($operador == "+"){
-echo "a soma é " . $numero + $numero2 . "<br>obrigado";
+echo "A soma é igual a: " . $numero + $numero2;
 } elseif ($operador == "-"){
-    echo "a subtração é " . $numero - $numero2;
+echo "A subtração é " . $numero - $numero2;
 } elseif ($operador == "*"){
-    echo "a multiplicação é " . $numero * $numero2;
+echo "A multiplicação é igual a: " . $numero * $numero2;
 } elseif ($operador == "/"){
-    echo "a divisão é " . $numero / $numero2;
-} else {
-    echo "operador invalido !";
+echo "A divisão é igual a: " . $numero / $numero2;
+} elseif ($operador == "%"){
+echo "A porcentagem é igual a: " . $numero - ($numero * $numero2 /100);
 }
