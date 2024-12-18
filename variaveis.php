@@ -85,7 +85,7 @@ echo "<br>soma: " . $soma;
 <= (menor igual)
 && (e)
 || (ou)
-. (cintatenação)
+. (contatenação)
 % (modulo) pego o resto da divisao
 
 if, else, - se, senão
