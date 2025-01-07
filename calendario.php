@@ -1,11 +1,11 @@
 <?php
+$data = "31/01/2025";
+
+list($dia, $mes, $ano) = explode('/', $data); // Extraímos dia, mês e ano de forma mais facil
+
 $dia = (int) $dia;
 $mes = (int) $mes;
 $ano = (int) $ano;
-
-$data = "31/01/2025";
-
-list($dia, $mes, $ano) = explode('/', $data); // Extraímos dia, mês e ano de forma mais eficiente
 
 function bissexto($ano) {
     return (($ano % 4 == 0 && $ano % 100 != 0) || ($ano % 400 == 0));
