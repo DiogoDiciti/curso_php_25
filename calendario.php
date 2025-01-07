@@ -1,4 +1,7 @@
 <?php
+$dia = (int) $dia;
+$mes = (int) $mes;
+$ano = (int) $ano;
 
 $data = "31/01/2025";
 
