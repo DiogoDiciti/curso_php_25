@@ -10,7 +10,7 @@ $ano = substr($data, 6, 4);
 function isBissexto($ano) {
     if (($ano % 4 == 0 && $ano % 100 != 0) || ($ano % 400 == 0)) {
         return true;
-    }
+    } 
     return false;
 }
 
@@ -27,12 +27,12 @@ function validarData($dia, $mes, $ano) {
 
     // Verifica se o mês e o dia são válidos
     if ($mes < 1 || $mes > 12) {
-        return "Mês inválido!";
+        return echo "Mês inválido!";
     } elseif ($dia < 1 || $dia > $diasPorMes[$mes]) {
-        return "Dia inválido!";
+        return  echo "Dia inválido!";
     }
 
-    return "Data válida!";
+    return echo "Data válida!";
 }
 
 // Validando a data fornecida
