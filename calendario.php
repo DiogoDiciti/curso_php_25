@@ -27,12 +27,12 @@ function validarData($dia, $mes, $ano) {
 
     // Verifica se o mês e o dia são válidos
     if ($mes < 1 || $mes > 12) {
-        return echo "Mês inválido!";
+        return "Mês inválido!";
     } elseif ($dia < 1 || $dia > $diasPorMes[$mes]) {
-        return  echo "Dia inválido!";
+        return "Dia inválido!";
     }
 
-    return echo "Data válida!";
+    return "Data válida!";
 }
 
 // Validando a data fornecida
