@@ -1,40 +1,61 @@
 <?php
 
-$data = "31/01/2025"; 
-// Extraindo o dia, mês e ano
-$dia = substr($data, 0, 2);
+$data = "31/01/2025";
+
+$dia = substr($data, 0, 2); 
 $mes = substr($data, 3, 2);
 $ano = substr($data, 6, 4);
 
-// Função para verificar se o ano é bissexto
-function isBissexto($ano) {
-    if (($ano % 4 == 0 && $ano % 100 != 0) || ($ano % 400 == 0)) {
-        return true;
-    } 
-    return false;
+function bissexto($ano) {
+   // Verifica se o ano é bissexto
+   return (($ano % 4 == 0 && $ano % 100 != 0) || ($ano % 400 == 0));
 }
 
-// Função para validar a data
-function validarData($dia, $mes, $ano) {
-    // Verifica se o ano é bissexto
-    $bissexto = isBissexto($ano);
-
-    // Verificando os dias de cada mês (considerando o ano bissexto para fevereiro)
-    $diasPorMes = [
-        1 => 31, 2 => ($bissexto ? 29 : 28), 3 => 31, 4 => 30, 5 => 31, 6 => 30,
-        7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31
-    ];
-
-    // Verifica se o mês e o dia são válidos
-    if ($mes < 1 || $mes > 12) {
-        return "Mês inválido!";
-    } elseif ($dia < 1 || $dia > $diasPorMes[$mes]) {
-        return "Dia inválido!";
-    }
-
-    return "Data válida!";
+function meses($mes) {
+   // Verificando se o mês é valido
+   return ($mes >= 1 && $mes <= 12);
 }
 
-// Validando a data fornecida
-$resultado = validarData($dia, $mes, $ano);
-echo $resultado;
+if ($mes == 1 || $mes == 3 || $mes == 5 || $mes == 7 || $mes == 8 || $mes == 10 || $mes == 12) {
+   if ($dia <= 31) {
+       echo "Data válida.<br>";
+   } else {
+       echo "Dia inválido.<br>";
+   }
+} else if ($mes == 02 && bissexto($ano)) { 
+   if ($dia <= 29) {
+       echo "Data válida.<br>";
+   } else {
+       echo "Dia inválido.<br>";
+   }
+} else if ($mes == 02 && !bissexto($ano)) {  // Passando o ano para bissexto
+   if ($dia <= 28) {
+       echo "Data válida.<br>";
+   } else {
+       echo "Dia inválido.<br>";
+   }
+} else if ($mes == 4 || $mes == 6 || $mes == 9 || $mes == 11) {
+   if ($dia <= 30) {
+       echo "Data válida.<br>";
+   } else {
+       echo "Dia inválido.<br>";
+   }
+} else {
+   echo "Mês inválido.<br>";
+}
+
+// Verificando se o ano é bissexto
+if (bissexto($ano)) {
+   echo "$ano é um ano bissexto.<br>";
+} else {
+   echo "$ano não é um ano bissexto.<br>";
+}
+
+// Verificando se o mês é válido
+if (meses($mes)) {
+   echo "$mes é valido !.<br>";
+} else {
+   echo "$mes é inválido!.<br>";
+}
+
+echo "A data é $dia/$mes/$ano.<br>";
