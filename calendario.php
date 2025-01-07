@@ -1,7 +1,6 @@
 <?php
 
-$data = "31/01/2025"; // Definindo a data corretamente como string
-
+$data = "31/01/2025"; 
 // Extraindo o dia, mês e ano
 $dia = substr($data, 0, 2);
 $mes = substr($data, 3, 2);
@@ -39,4 +38,3 @@ function validarData($dia, $mes, $ano) {
 // Validando a data fornecida
 $resultado = validarData($dia, $mes, $ano);
 echo $resultado;
-?>
