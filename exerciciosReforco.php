@@ -47,10 +47,10 @@ function primo($numero) {
     return true;
 }
 
-echo "Os 10 primeiros primos a partir de 10 são:\n";
+echo "Os 10 são:\n";
 
 $contador = 0;
-$numero = 10; // Começa a busca a partir de 10
+$numero = 0; // Começa a busca a partir de 0
 
 while ($contador < 10) {
     if (primo($numero)) {
@@ -58,4 +58,5 @@ while ($contador < 10) {
         $contador++;
     }
     $numero++; 
-}
+};
+
