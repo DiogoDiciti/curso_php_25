@@ -40,8 +40,8 @@ echo "Impares: " . implode(", ", $impares) . "<br>"; //1, 3, 5...
 function primo($numero) {
     if ($numero <= 1) {
         return false;
-}
-    for ($i = 2; $i <= sqrt($numero); $i++) {
+    }
+    for ($i = 2; $i <= sqrt($numero); $i++) { // Melhorado para verificar até a raiz quadrada
         if ($numero % $i == 0) {
             return false;
         }
@@ -62,7 +62,7 @@ while (count($primos) < 10) {
 
 echo "<br>Primeiros 10 números primos a partir do 10: " . implode(", ", $primos) . "<br>"; // Exibe os 10 primeiros números primos
 
-// Função para ordenar um array em ordem crescente sem usar sort, usort ou asort
+// Função para ordenar um array em ordem crescente
 function ordenar_array($array) {
     $n = count($array);
     
