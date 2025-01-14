@@ -17,11 +17,6 @@
 
  tabuada(5);
 
- //função para descobrir se é primo
-
- $pares = [];
- $impares = [];
-
  // Encontrando os números pares e ímpares
  for ($i = 0; $i <= 20; $i++) {
     $resto = $i %  2;
