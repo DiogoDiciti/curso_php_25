@@ -41,7 +41,7 @@ function primo($numero) {
     if ($numero <= 1) {
         return false;
     }
-    for ($i = 2; $i <= sqrt($numero); $i++) { // Melhorado para verificar até a raiz quadrada
+    for ($i = 2; $i <= sqrt($numero); $i++) { 
         if ($numero % $i == 0) {
             return false;
         }
@@ -60,7 +60,7 @@ while (count($primos) < 10) {
     $numero++;
 }
 
-echo "<br>Primeiros 10 números primos a partir do 10: " . implode(", ", $primos) . "<br>"; // Exibe os 10 primeiros números primos
+echo "<br>Primeiros 10 números primos a partir do 10: " . implode(", ", $primos) . "<br>"; // 10 primeiros números primos
 
 // Função para ordenar um array em ordem crescente
 function ordenar_array($array) {
