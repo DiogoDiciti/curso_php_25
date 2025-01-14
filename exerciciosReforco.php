@@ -63,25 +63,3 @@ while (count($primos) < 10) {
 echo "<br>Primeiros 10 números primos a partir do 10: " . implode(", ", $primos) . "<br>"; // 10 primeiros números primos
 
 // Função para ordenar um array em ordem crescente
-function ordenar_array($array) {
-    $n = count($array);
-    
-    for ($i = 1; $i < $n; $i++) {
-        $chave = $array[$i];
-        $j = $i - 1;
-
-    
-        for (; $j >= 0 && $array[$j] > $chave; $j--) {
-            $array[$j + 1] = $array[$j];
-        }
-        $array[$j + 1] = $chave;
-    }
-
-    return $array;
-}
-
-// Ordenando o array fornecido
-$array = [10, 5, 2, 30, 85, 14];
-$array_ordenado = ordenar_array($array);
-
-echo "<br>Array ordenado: " . implode(", ", $array_ordenado) . "<br>";
