@@ -16,6 +16,7 @@
  }
 
  tabuada(5);
+ echo "<br>";
 
  // Encontrando os números pares e ímpares
  for ($i = 0; $i <= 20; $i++) {
@@ -31,6 +32,8 @@
 echo "<br>Pares: " . implode(", ", $pares) . "<br>"; //0, 2, 4...
 echo "Impares: " . implode(", ", $impares) . "<br>"; //1, 3, 5...
 
+echo "<br>";
+
 // Função para verificar se um número é primo
 function primo($numero) {
     if ($numero <= 1) {
@@ -44,17 +47,15 @@ function primo($numero) {
     return true;
 }
 
-// Encontrar os 10 primeiros números primos a partir do 10
-$primos = [];
-$numero = 10;
+echo "Os 10 primeiros primos a partir de 10 são:\n";
 
-while (count($primos) < 10) {
+$contador = 0;
+$numero = 10; // Começa a busca a partir de 10
+
+while ($contador < 10) {
     if (primo($numero)) {
-        $primos[] = $numero;
+        echo $numero . "\n";
+        $contador++;
     }
-    $numero++;
+    $numero++; 
 }
-
-echo "<br>Primeiros 10 números primos a partir do 10: " . implode(", ", $primos) . "<br>"; // 10 primeiros números primos
-
-// Função para ordenar um array em ordem crescente
