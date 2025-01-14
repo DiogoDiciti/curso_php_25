@@ -47,7 +47,7 @@ function primo($numero) {
     return true;
 }
 
-echo "Os 10 são:\n";
+echo "Os 10 primos são:\n";
 
 $contador = 0;
 $numero = 0; // Começa a busca a partir de 0
