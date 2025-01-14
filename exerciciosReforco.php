@@ -66,14 +66,13 @@ echo "<br>Primeiros 10 números primos a partir do 10: " . implode(", ", $primos
 function ordenar_array($array) {
     $n = count($array);
     
-    // Algoritmo de ordenação por inserção
     for ($i = 1; $i < $n; $i++) {
         $chave = $array[$i];
         $j = $i - 1;
 
-        while ($j >= 0 && $array[$j] > $chave) {
+    
+        for (; $j >= 0 && $array[$j] > $chave; $j--) {
             $array[$j + 1] = $array[$j];
-            $j--;
         }
         $array[$j + 1] = $chave;
     }
@@ -85,5 +84,4 @@ function ordenar_array($array) {
 $array = [10, 5, 2, 30, 85, 14];
 $array_ordenado = ordenar_array($array);
 
-echo "<br>Array ordenado: " . implode(", ", $array_ordenado) . "<br>"; // Exibe o array ordenado
-?>
+echo "<br>Array ordenado: " . implode(", ", $array_ordenado) . "<br>";
