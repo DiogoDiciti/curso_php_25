@@ -59,4 +59,7 @@ while ($contador < 10) {
     }
     $numero++; 
 };
+?>
+
+<?php
 
