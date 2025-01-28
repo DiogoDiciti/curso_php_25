@@ -14,7 +14,7 @@ class ContaBancaria {
     public $historico = [];
     public $minhaConta = "Diogo Diciti"; 
 
-    // Método para sacar dinheiro
+    // sacar o dinheiro
     public function sacar($valor) {
         if ($valor <= 0) {
             echo "O valor a ser sacado deve ser positivo.";
@@ -29,7 +29,7 @@ class ContaBancaria {
         return true;
     }
 
-    // Método para depositar dinheiro
+    // depositar dinheiro na conta
     public function depositar($valor) {
         if ($valor <= 0) {
             echo "O valor a ser depositado deve ser positivo.";
@@ -40,7 +40,7 @@ class ContaBancaria {
         return true;
     }
 
-    // Método para realizar um PIX
+    // Fazer um PIX
     public function pix($valor, $destinatario) {
         if ($valor <= 0) {
             echo "O valor do PIX deve ser positivo.";
@@ -56,8 +56,10 @@ class ContaBancaria {
         return true;
     }
 
-    // Método para visualizar o saldo da conta
+    // visualizar o saldo da conta
     public function verSaldo() {
         echo "Saldo atual: R$" . number_format($this->saldo, 2, ',', '.') . "<br>";
     }
+
+
 }
