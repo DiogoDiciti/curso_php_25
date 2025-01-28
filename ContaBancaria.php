@@ -17,11 +17,11 @@ class ContaBancaria {
     // Método para sacar dinheiro
     public function sacar($valor) {
         if ($valor <= 0) {
-            echo "O valor a ser sacado deve ser positivo.\n";
+            echo "O valor a ser sacado deve ser positivo.";
             return false;
         }
         if ($this->saldo < $valor) {
-            echo "Saldo insuficiente.\n";
+            echo "Saldo insuficiente.";
             return false;
         }
         $this->saldo -= $valor;
@@ -32,7 +32,7 @@ class ContaBancaria {
     // Método para depositar dinheiro
     public function depositar($valor) {
         if ($valor <= 0) {
-            echo "O valor a ser depositado deve ser positivo.\n";
+            echo "O valor a ser depositado deve ser positivo.";
             return false;
         }
         $this->saldo += $valor;
@@ -43,11 +43,11 @@ class ContaBancaria {
     // Método para realizar um PIX
     public function pix($valor, $destinatario) {
         if ($valor <= 0) {
-            echo "O valor do PIX deve ser positivo.\n";
+            echo "O valor do PIX deve ser positivo.";
             return false;
         }
         if ($this->saldo < $valor) {
-            echo "Saldo insuficiente para o PIX.\n";
+            echo "Saldo insuficiente para o PIX.";
             return false;
         }
         $this->saldo -= $valor;
@@ -60,26 +60,4 @@ class ContaBancaria {
     public function verSaldo() {
         echo "Saldo atual: R$" . number_format($this->saldo, 2, ',', '.') . "<br>";
     }
-
-    // Método para exibir o extrato
-    public function extrato() {
-        if (empty($this->historico)) {
-            echo "Nenhuma transação realizada.<br>";
-            return;
-        }
-        echo "Extrato de Transações:<br>";
-        foreach ($this->historico as $transacao) {
-            echo $transacao . "<br>";
-        }
-    }
 }
-
-// Teste da classe
-$minhaConta = new ContaBancaria();
-$minhaConta->depositar(800);      
-$minhaConta->sacar(0);          
-$minhaConta->pix(0, "João");    
-$minhaConta->verSaldo();          
-$minhaConta->extrato();           
-
-?>
