@@ -10,7 +10,7 @@
 class ContaBancaria {
     public $titular = "";
     public $destinatario = "";
-    public $saldo = 10000;
+    public $saldo = 100;
     public $historico = [];
     public $minhaConta = "Diogo Diciti"; 
 
