@@ -1,11 +1,5 @@
 <?php
 
-class ContaBancaria {
-    public $titular = "";
-    public $destinatario = "";
-    public $saldo = 10000;
-    public $historico = [];
-
     /*public function sacar() {}
     public function depositar() {}
     public function pix () {}
@@ -13,14 +7,21 @@ class ContaBancaria {
     public function extrato() {}
 */
 
+class ContaBancaria {
+    public $titular = "";
+    public $destinatario = "";
+    public $saldo = 10000;
+    public $historico = [];
+    public $minhaConta = "Diogo Diciti"; 
+
     // Método para sacar dinheiro
     public function sacar($valor) {
         if ($valor <= 0) {
-            echo "O valor a ser sacado deve ser positivo.";
+            echo "O valor a ser sacado deve ser positivo.\n";
             return false;
         }
         if ($this->saldo < $valor) {
-            echo "Saldo insuficiente.";
+            echo "Saldo insuficiente.\n";
             return false;
         }
         $this->saldo -= $valor;
@@ -31,7 +32,7 @@ class ContaBancaria {
     // Método para depositar dinheiro
     public function depositar($valor) {
         if ($valor <= 0) {
-            echo "Não é possivel depositar esse valor.";
+            echo "O valor a ser depositado deve ser positivo.\n";
             return false;
         }
         $this->saldo += $valor;
@@ -39,4 +40,46 @@ class ContaBancaria {
         return true;
     }
 
-}    
+    // Método para realizar um PIX
+    public function pix($valor, $destinatario) {
+        if ($valor <= 0) {
+            echo "O valor do PIX deve ser positivo.\n";
+            return false;
+        }
+        if ($this->saldo < $valor) {
+            echo "Saldo insuficiente para o PIX.\n";
+            return false;
+        }
+        $this->saldo -= $valor;
+        $this->destinatario = $destinatario;
+        $this->historico[] = "PIX de R$" . number_format($valor, 2, ',', '.') . " para $destinatario";
+        return true;
+    }
+
+    // Método para visualizar o saldo da conta
+    public function verSaldo() {
+        echo "Saldo atual: R$" . number_format($this->saldo, 2, ',', '.') . "<br>";
+    }
+
+    // Método para exibir o extrato
+    public function extrato() {
+        if (empty($this->historico)) {
+            echo "Nenhuma transação realizada.<br>";
+            return;
+        }
+        echo "Extrato de Transações:<br>";
+        foreach ($this->historico as $transacao) {
+            echo $transacao . "<br>";
+        }
+    }
+}
+
+// Teste da classe
+$minhaConta = new ContaBancaria();
+$minhaConta->depositar(800);      
+$minhaConta->sacar(0);          
+$minhaConta->pix(0, "João");    
+$minhaConta->verSaldo();          
+$minhaConta->extrato();           
+
+?>
