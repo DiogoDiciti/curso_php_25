@@ -1,23 +1,32 @@
 <?php
 
-    /*public function sacar() {}
-    public function depositar() {}
-    public function pix () {}
-    public function verSaldo() {}
-    public function extrato() {}
-*/
-
 class ContaBancaria {
     public $titular = "";
     public $destinatario = "";
     public $saldo = 0;
     public $historico = [];
-    
-    public function sacar() {}
-    public function depositar() {}
+
+    public function sacar($valor) {
+    if ($valor > $this->saldo) {
+        return "Saldo insuficiente para o saque de R$ $valor.";
+    }
+     $this->saldo -= $valor;
+        $this->historico[] = "Saque de R$ $valor.";
+            return "Você sacou R$ $valor.";
+    }  
+
+    public function depositar($valor) {
+        if ($valor <= 0) { // primeiro para vereficar se o valor é negativo ou zero...
+            return "Impossível depositar esse valor.<br>";    
+        } 
+        $this->saldo += $valor; // Atualiza o saldo da conta.
+        $this->historico[] = "Depósito de R$ $valor"; // Adiciona lá no historico.
+        return "Você depositou R$ $valor.";
+    }    
+
     public function pix() {
 
-        $this->setHistorico("Joao", "Pedro", 150);
+        $this->setHistorico("Joao", "Pedro", 100);
     }
     public function verSaldo() {}
 
@@ -55,5 +64,5 @@ class ContaBancaria {
 }
 
 $conta = new ContaBancaria();
-$conta->pix();
+$conta->pix(800);
 echo $conta->extrato();
