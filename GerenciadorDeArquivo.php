@@ -49,7 +49,7 @@ class GerenciadorDeArquivo {
         $dados = file_get_contents($this->caminhoArquivo);
 
         if (empty($dados)) {
-            throw new Exception("Não foi possivel ler os dados do arquivo.");
+            return [];
         }
 
         return json_decode($dados, true) ?? [];
