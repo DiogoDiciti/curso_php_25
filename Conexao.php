@@ -1,6 +1,6 @@
 <?php
 
-$conexao = mysqli_connect("localhost", "aluno", "1234", "curso_php_25");
+$conexao = mysqli_connect("localhost", "aluno", "1234", "curso25");
 
 // só entra aqui se deu erro ao conectar com o banco.
 if (!$conexao) {

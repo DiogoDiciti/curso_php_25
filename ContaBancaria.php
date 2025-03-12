@@ -119,8 +119,8 @@ class ContaBancaria {
             if ($conta['id'] === $idConta) {
                 return $conta['saldo'];
             }
-        }
         
+        }
         return null; 
     }
 }
@@ -143,7 +143,6 @@ class ContaBancaria {
 // closure != (<>) clojure
 
 
-
 // http://localhost/curso_php_25/ContaBancaria.php?id=5
 //http://localhost/curso_php_25/ContaBancaria.php?id=5&saldo=1000
 $id = $_REQUEST["id"] ?? 0;
@@ -151,20 +150,24 @@ $saldoMin = $_REQUEST["saldoMin"] ?? 0;
 $saldoMax = $_REQUEST["saldoMax"] ?? 10000;
 $nomeTitular = $_REQUEST ["nomeTitular"] ?? "";
 
-$sql = "SELECT * FROM conta_bancaria WHERE id = $id";
+$sql = "SELECT * FROM conta_bancaria WHERE 1=1";
 
 if ($id > 0) {
-    $sql .= " WHERE id = $id";
+    $sql .= " AND id = '$id'";
 }
 
-if ($saldo > 0) {
-    // SELECT * FROM conta_bancaria WHERE id = $id and saldo <= $saldo;
-    $sql .= " and saldo <= $saldo";
-    // $sql = $sql . " and saldo <= $saldo";
+
+if ($saldoMin > 0) {
+    $sql .= " AND saldo >= $saldoMin";
+}
+
+
+if ($saldoMax > 0) {
+    $sql .= " AND saldo <= $saldoMax";
 }
 
 if (!empty($nomeTitular)) {
-    $sql .= " and m=nome_titular LIKE '%$nome_titular%'";
+    $sql .= " AND nome_titular LIKE '%$nome_titular%'";
 }
 
 // SELECT * FROM conta_bancaria WHERE id = $id and saldo <= $saldo
