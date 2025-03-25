@@ -18,11 +18,16 @@
 --
 -- Table structure for table `conta_bancaria`
 --
+
 DROP DATABASE IF EXISTS `curso_php_25`;
 
 CREATE DATABASE IF NOT EXISTS `curso_php_25`;
 
 USE `curso_php_25`;
+
+-- CREATE USER 'aluno'@localhost IDENTIFIED BY '1234';
+
+-- GRANT ALL PRIVILEGES ON *.* TO 'aluno'@localhost IDENTIFIED BY '1234';
 
 DROP TABLE IF EXISTS `conta_bancaria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -30,7 +35,7 @@ DROP TABLE IF EXISTS `conta_bancaria`;
 CREATE TABLE `conta_bancaria` (
   `id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `nome_titular` varchar(255) NOT NULL,
-  `saldo` decimal(10,0) NOT NULL DEFAULT 0,
+  `saldo` decimal(10,2) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +46,7 @@ CREATE TABLE `conta_bancaria` (
 
 LOCK TABLES `conta_bancaria` WRITE;
 /*!40000 ALTER TABLE `conta_bancaria` DISABLE KEYS */;
-INSERT INTO `conta_bancaria` VALUES (1,'Diogo',200),(2,'Ariel',500),(3,'Odair',1200),(4,'Diego',1300),(5,'Rafael',800);
+INSERT INTO `conta_bancaria` VALUES (1,'Ariel',200),(2,'Diego',500),(3,'Odair',800),(4,'Diogo',1100),(5,'Rafael',1400);
 /*!40000 ALTER TABLE `conta_bancaria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-18 21:27:34
+-- Dump completed on 2025-02-18 21:31:59

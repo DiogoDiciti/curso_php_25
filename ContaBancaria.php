@@ -1,193 +1,109 @@
 <?php
 
-require_once "./GerenciadorDeArquivo.php";
-
-require_once "./Conexao.php";
+require_once "./Database.php";
 
 class ContaBancaria {
     public string $titular = "";
     public string $destinatario = "";
     public float $saldo = 0;
 
-    private GerenciadorDeArquivo $arquivoTxt;
+    private $bancoDeDados;
     
-    public function __construct(GerenciadorDeArquivo $arquivoTxt)
+    public function __construct($bancoDeDados)
     {
-        $this->arquivoTxt = $arquivoTxt;
+        $this->bancoDeDados = $bancoDeDados;
     }
-    
+
+    private function processarDadosVisualizacao($dados)
+    {
+        foreach ($dados as $idx => $linha) {
+            echo "Id: $linha->id Nome: $linha->nome_titular Saldo: $linha->saldo";   
+            echo "<br>";
+        }
+    }
+
+    private function obterDadosConta($idConta) {
+        $sql = "SELECT * FROM conta_bancaria WHERE id = '$idConta';";
+
+        return $this->bancoDeDados->execQuery($sql);
+    }
+
+    public function criarConta(string $nome, float $valor = 0.0)
+    {
+        $sql = "INSERT INTO conta_bancaria (nome_titular, saldo) VALUES ('$nome', $valor);";
+        $idConta = $this->bancoDeDados->execQuery($sql);
+        $this->extrato($idConta);
+    }
+
+    public function sacar($idConta, $valor)
+    {
+        if (empty($idConta)) {
+            return "Erro, id da conta está em branco ou é inváldo!";
+        }
+
+        $dadosConta = $this->obterDadosConta($idConta);
+
+        if (empty($dadosConta)) {
+            return "Erro ao obter a conta. Conta inexistente. verifique o ID informado.";
+        }
+
+        $saldo = $dadosConta[0]->saldo;
+        $valorTmp = $saldo - $valor;
+
+        $sql = "UPDATE conta_bancaria SET saldo=$valorTmp WHERE id='$idConta';";
+        $this->bancoDeDados->execQuery($sql);
+    }
+
+    public function depositar($idConta, $valor)
+    {
+        if (empty($idConta)) {
+            return "Erro, id da conta está em branco ou é inváldo!";
+        }
+
+        $dadosConta = $this->obterDadosConta($idConta);
+
+        if (empty($dadosConta)) {
+            return "Erro ao obter a conta. Conta inexistente. verifique o ID informado.";
+        }
+
+        $saldo = $dadosConta[0]->saldo;
+        $valorTmp = $saldo + $valor;
+
+        $sql = "UPDATE conta_bancaria SET saldo=$valorTmp WHERE id='$idConta';";
+        $this->bancoDeDados->execQuery($sql);
+    }
+
+    public function pix($contaOrigem, $contaDestino, $valor)
+    {
+        $this->sacar($contaOrigem, $valor);
+        $this->depositar($contaDestino, $valor);     
+    }
+
     public function listarContas()
     {
-        $dados = $this->arquivoTxt->ler();
-        
-        foreach ($dados as $idx => $conta) {
-
-            $numConta = $conta['id'];
-            $nome = $conta['nome'];
-            $saldo = $conta['saldo'];
-
-            echo "N° Conta: {$numConta} <br> Nome: {$nome} <br> Saldo: {$saldo}<br><br>";
-        }
-    }
-
-    private function gerarIdConta() {
-        $idsConta = [];
-        $dados = $this->arquivoTxt->ler();
-
-        foreach($dados as $idx => $conta) {
-            $idsConta[] = $conta['id'];
-        }
-
-        $proximoId  = array_reverse($idsConta);
-
-        return $proximoId[0] + 1;
-
-    }
-
-    public function criarConta(string $nome, float $saldoInicial = 0.0)
-    {
-        $idConta = $this->gerarIdConta();
-        $dados = $this->arquivoTxt->ler();
-
-        $novaConta = [
-            'id' => $idConta,
-            'nome' => $nome,
-            'saldo' => $saldoInicial,
-        ];
-
-        $dados[] = $novaConta;
-        $this->arquivoTxt->escrever($dados);
-    }
-
-    public function sacar($idConta, $valor) {
-        $dados = $this->arquivoTxt->ler();
-        foreach ($dados as &$conta) {
-            if ($conta['id'] === $idConta) {
-                if ($conta['saldo'] >= $valor) {
-                    $conta['saldo'] -= $valor;
-                    $this->arquivoTxt->escrever($dados);
-                    return true;
-                }
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public function depositar($idConta, $valor) {
-
-        $dados = $this->arquivoTxt->ler();
-
-        foreach ($dados as $idx => &$conta) {
-
-            if ($conta['id'] === $idConta) {
-                $conta['saldo'] += $valor;
-                $this->arquivoTxt->escrever($dados);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function pix($contaOrigem, $contaDestino, $valor) {
-
-        $dados = $this->arquivoTxt->ler();
-
-        foreach($dados as $idx => &$conta){
-            if ($this->extrato($contaOrigem) < $valor){
-                break;
-            }
-
-            if ($conta['id'] === $contaOrigem) {
-                $conta['saldo'] -= $valor;
-                $this->arquivoTxt->escrever($dados);
-            }
-
-            if ($conta['id'] === $contaDestino) {
-                $conta['saldo'] += $valor;
-                $this->arquivoTxt->escrever($dados);
-            }
-        }
-
-        return false;
+        $sql = "SELECT * FROM conta_bancaria;";
+        $dados = $this->bancoDeDados->execQuery($sql);
+        $this->processarDadosVisualizacao($dados);
     }
 
     public function extrato($idConta) {
-        $dados = $this->arquivoTxt->ler();
-        
-        foreach ($dados as $conta) {
-            if ($conta['id'] === $idConta) {
-                return $conta['saldo'];
-            }
-        
+
+        if (empty($idConta)) {
+            echo "Erro, id da conta está em branco ou é inváldo!";
+            exit;
         }
-        return null; 
+
+        $sql = "SELECT * FROM conta_bancaria WHERE id = '$idConta';";
+        $dados = $this->bancoDeDados->execQuery($sql);
+        $this->processarDadosVisualizacao($dados);
     }
 }
-// $nomeArquivo = "banco_do_brasil.txt";
 
-// $arquivoTxt = new GerenciadorDeArquivo($nomeArquivo);
-// $conta = new ContaBancaria($arquivoTxt);
-
-// $conta->criarConta("Rafael", 150);
-// // $conta->depositar(10, 500);
-// // echo $conta->extrato(10);
-// echo $conta->listarContas();
-
-// print_r($conexao);
-
-// $conexao->close();
-// CRUD: Create Read Update Delete
-// READ (ALL) -> READ ONLY (Filtros: id, email, cpf)
-
-// closure != (<>) clojure
-
-
-// http://localhost/curso_php_25/ContaBancaria.php?id=5
-//http://localhost/curso_php_25/ContaBancaria.php?id=5&saldo=1000
 $id = $_REQUEST["id"] ?? 0;
 $saldoMin = $_REQUEST["saldoMin"] ?? 0;
-$saldoMax = $_REQUEST["saldoMax"] ?? 10000;
-$nomeTitular = $_REQUEST ["nomeTitular"] ?? "";
+$saldoMax = $_REQUEST["saldoMax"] ?? 0;
+$nomeTitular = $_REQUEST["nomeTitular"] ?? "";
 
-$sql = "SELECT * FROM conta_bancaria WHERE 1=1";
-
-if ($id > 0) {
-    $sql .= " AND id = '$id'";
-}
-
-
-if ($saldoMin > 0) {
-    $sql .= " AND saldo >= $saldoMin";
-}
-
-
-if ($saldoMax > 0) {
-    $sql .= " AND saldo <= $saldoMax";
-}
-
-if (!empty($nomeTitular)) {
-    $sql .= " AND nome_titular LIKE '%$nome_titular%'";
-}
-
-// SELECT * FROM conta_bancaria WHERE id = $id and saldo <= $saldo
-// SELECT * FROM conta_bancaria WHERE id = $id and saldo <= $saldo;
-$sql .=";";
-
-$result = $conexao->query($sql);
-
-$existeDados = $result->num_rows;
-
-if (!$existeDados) {
-    echo "Não foi possivel obter os dados.";
-    exit;
-}
-
-while ($registro = $result->fetch_assoc()) {
-    $linha = (object) $registro;
-    //  $linha->id <= $linha["id"]
-
-    echo "Id: $linha->id Nome: $linha->nome_titular Saldo: $linha->saldo";
-    
-    echo "<br>";
-}
+$conta = new ContaBancaria($bancoDeDados);
+echo $conta->pix(10, 1, 520);
+echo $conta->listarContas();
